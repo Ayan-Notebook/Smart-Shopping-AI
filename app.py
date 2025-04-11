@@ -4,7 +4,10 @@ import streamlit as st
 from agents.customer_agent import CustomerAgent
 from agents.recommender_agent import RecommenderAgent
 from agents.db_agent import DBAgent
-
+import os
+os.makedirs("database", exist_ok=True)
+db_path = os.path.join(os.getcwd(), "database", "memory.db")
+db_agent = DBAgent(db_path)
 # Initialize agents
 db_agent = DBAgent("database/memory.db")
 customer_agent = CustomerAgent(db_agent)
